@@ -10,4 +10,14 @@
 
 @implementation ToDoData
 
+-(instancetype)initWithName:(NSString*)name priority:(NSString*)priority{
+    self = [super init];
+    if (self) {
+        _name = name;
+        _isDone = false;//if loading form saved file will need to check
+        _priority = priority;
+    }
+    return self;
+}
+
 @end

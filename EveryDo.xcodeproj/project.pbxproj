@@ -18,6 +18,7 @@
 		0B1724B321F79BC40004CF47 /* ToDoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B221F79BC40004CF47 /* ToDoCell.m */; };
 		0B1724B621F7A3A70004CF47 /* ToDoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B521F7A3A70004CF47 /* ToDoData.m */; };
 		0B1724B921F7A3B70004CF47 /* ToDoDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B821F7A3B70004CF47 /* ToDoDataManager.m */; };
+		0B1724BC21F7B44F0004CF47 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724BB21F7B44F0004CF47 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		0B1724B521F7A3A70004CF47 /* ToDoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoData.m; sourceTree = "<group>"; };
 		0B1724B721F7A3B70004CF47 /* ToDoDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoDataManager.h; sourceTree = "<group>"; };
 		0B1724B821F7A3B70004CF47 /* ToDoDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoDataManager.m; sourceTree = "<group>"; };
+		0B1724BA21F7B44F0004CF47 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		0B1724BB21F7B44F0004CF47 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				0B17247D21F79A7E0004CF47 /* AppDelegate.m */,
 				0B1724AE21F79B830004CF47 /* MainViewController.h */,
 				0B1724AF21F79B830004CF47 /* MainViewController.m */,
+				0B1724BA21F7B44F0004CF47 /* DetailViewController.h */,
+				0B1724BB21F7B44F0004CF47 /* DetailViewController.m */,
 				0B1724B121F79BC40004CF47 /* ToDoCell.h */,
 				0B1724B221F79BC40004CF47 /* ToDoCell.m */,
 				0B1724B421F7A3A70004CF47 /* ToDoData.h */,
@@ -283,6 +288,7 @@
 				0B1724B021F79B830004CF47 /* MainViewController.m in Sources */,
 				0B17247E21F79A7E0004CF47 /* AppDelegate.m in Sources */,
 				0B1724B321F79BC40004CF47 /* ToDoCell.m in Sources */,
+				0B1724BC21F7B44F0004CF47 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

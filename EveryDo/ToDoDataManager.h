@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ToDoCell.h"
+#import "ToDoData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ToDoDataManager : NSObject
+
+@property (strong,nonatomic)NSArray<ToDoData*> *toDoList;
+
+-(NSInteger)getListCount;
+-(ToDoData*)getCellDataAtIndex:(NSUInteger)index;
 
 @end
 

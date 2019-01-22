@@ -6,7 +6,13 @@
 //  Copyright © 2019 Spencer Symington. All rights reserved.
 //
 
+
 #import "ToDoCell.h"
+
+
+
+
+
 @interface ToDoCell(){
     
 }
@@ -15,6 +21,8 @@
 @end
 @implementation ToDoCell
 - (IBAction)isDoneButton:(UIButton*)sender {
+    
+    //TODO change the value in the data maodel
     self.isDone = !self.isDone;
     if(self.isDone){
         [sender setTitle:@"☑︎" forState:UIControlStateNormal];
