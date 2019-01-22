@@ -11,11 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 enum TODO_PRIORITY {
-    URGENT,
-    HIGH,
-    MEDIUM,
-    LOW
     
+    LOW,
+    MEDIUM,
+    HIGH,
+    URGENT
 };
 
 @interface ToDoData : NSObject
@@ -23,12 +23,12 @@ enum TODO_PRIORITY {
 
 
 
--(instancetype)initWithName:(NSString*)name priority:(NSString*)priority;
+-(instancetype)initWithName:(NSString*)name priority:(enum TODO_PRIORITY)priority;
 
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic)enum TODO_PRIORITY priority;
 @property (nonatomic)BOOL isDone;
-
++(NSString*)getStringFromEnum:(enum TODO_PRIORITY)priority;
 @end
 
 NS_ASSUME_NONNULL_END

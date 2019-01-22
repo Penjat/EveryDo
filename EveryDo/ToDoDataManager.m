@@ -10,13 +10,24 @@
 
 @implementation ToDoDataManager
 
+
++ (instancetype)sharedInstance{
+    static ToDoDataManager *dataManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dataManager = [[ToDoDataManager alloc] init];
+        
+    });
+    return dataManager;
+}
+
 - (instancetype)init{
     self = [super init];
     if (self) {
         _toDoList = [[NSMutableArray alloc]init];
-        ToDoData *sample1 = [[ToDoData alloc]initWithName:@"pick up food" priority:@"3"];
-        ToDoData *sample2 = [[ToDoData alloc]initWithName:@"pay bills" priority:@"5"];
-        ToDoData *sample3 = [[ToDoData alloc]initWithName:@"get high" priority:@"1"];
+        ToDoData *sample1 = [[ToDoData alloc]initWithName:@"pick up food" priority:HIGH];
+        ToDoData *sample2 = [[ToDoData alloc]initWithName:@"pay bills" priority:LOW];
+        ToDoData *sample3 = [[ToDoData alloc]initWithName:@"wash dishes" priority:MEDIUM];
         
         _toDoList = [NSMutableArray arrayWithObjects:sample1,sample2,sample3, nil];
     }
@@ -32,7 +43,13 @@
     
     return self.toDoList[index];
 }
-
+-(void)createNewTODO{
+    ToDoData *newTODO = [[ToDoData alloc]initWithName:@"New Task" priority:LOW];
+    [self.toDoList addObject:newTODO];
+}
+-(ToDoData*)getLast{
+    return [self.toDoList lastObject];
+}
 
 
 @end

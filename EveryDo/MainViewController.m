@@ -13,8 +13,9 @@
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong,nonatomic)ToDoDataManager *dataManager;
+
 @property (nonatomic)NSUInteger curRow;
+@property (nonatomic)BOOL isCreating;
 @end
 
 @implementation MainViewController
@@ -24,41 +25,61 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.dataManager = [[ToDoDataManager alloc]init];
+    
     
     
     
 }
+- (IBAction)addToDo:(UIBarButtonItem*)sender {
+    NSLog(@"creating new TODO");
+    self.isCreating = YES;
+    [[ToDoDataManager sharedInstance] createNewTODO];
+    [self performSegueWithIdentifier:@"goToDetails" sender:nil];
+    
+}
 -(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"highliting");
     if(indexPath.row == self.curRow){
         //go to details
         NSLog(@"should go to details %li",indexPath.row);
+        self.isCreating = NO;
         [self performSegueWithIdentifier:@"goToDetails" sender:nil];
     }
     self.curRow = indexPath.row;
     return YES;
 }
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataManager getListCount];
+    return [[ToDoDataManager sharedInstance]  getListCount];
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myToDoCell" ];
-    ToDoData *cellData = [self.dataManager getCellDataAtIndex:indexPath.row];
+    ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:indexPath.row];
     
-    cell.name.text = cellData.name;
-    cell.priorityLabel.text = cellData.priority;
+    [cell setUpWithData:data];
     
     return cell;
 
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //TODO check identifier if adding more views
     DetailViewController *detailController = segue.destinationViewController;
-    ToDoData *data = [self.dataManager getCellDataAtIndex:self.curRow];
-    [detailController setToDoData:data];
+    
+    if(self.isCreating){
+        ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:self.curRow];
+        
+        
+        [detailController setToDoData:data];
+        [detailController setEditData:YES];
+    }else{
+        ToDoData *data = [[ToDoDataManager sharedInstance] getLast];
+        [detailController setToDoData:data];
+        [detailController setEditData:NO];
+    }
+    
 }
 
 

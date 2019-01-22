@@ -10,7 +10,7 @@
 
 @implementation ToDoData
 
--(instancetype)initWithName:(NSString*)name priority:(NSString*)priority{
+-(instancetype)initWithName:(NSString*)name priority:(enum TODO_PRIORITY)priority{
     self = [super init];
     if (self) {
         _name = name;
@@ -19,5 +19,23 @@
     }
     return self;
 }
++(NSString*)getStringFromEnum:(enum TODO_PRIORITY)priority{
+    
+    if(priority == HIGH){
+        return @"high";
+    }
+    if(priority == LOW){
+        return @"low";
+    }
+    if(priority == URGENT){
+        return @"urgent";
+    }
+    if(priority == MEDIUM){
+        return @"medium";
+    }
+    //default to medium
+    return @"medium";
+}
+
 
 @end

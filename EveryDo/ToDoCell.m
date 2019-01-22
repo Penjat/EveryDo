@@ -43,4 +43,29 @@
     // Configure the view for the selected state
 }
 
+-(void)setUpWithData:(ToDoData*)data{
+    self.name.text = data.name;
+    self.priorityLabel.text = [ToDoData getStringFromEnum: data.priority];
+    self.priorityLabel.textColor = [ToDoCell getColorForPriority:data.priority];
+}
+
++(UIColor*)getColorForPriority:(enum TODO_PRIORITY)priority{
+    if(priority == HIGH){
+        return UIColor.orangeColor;
+    }
+    if(priority == LOW){
+        return UIColor.greenColor;
+    }
+    if(priority == URGENT){
+        return UIColor.redColor;
+    }
+    if(priority == MEDIUM){
+        return UIColor.yellowColor;
+    }
+    //default to medium
+    return UIColor.orangeColor;;
+}
+
+
+
 @end

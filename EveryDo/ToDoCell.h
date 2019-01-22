@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDoData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (nonatomic)BOOL isDone;
+-(void)setUpWithData:(ToDoData*)data;
++(UIColor*)getColorForPriority:(enum TODO_PRIORITY)priority;
 @end
 
 NS_ASSUME_NONNULL_END
