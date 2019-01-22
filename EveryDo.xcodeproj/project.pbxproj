@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0B17247E21F79A7E0004CF47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17247D21F79A7E0004CF47 /* AppDelegate.m */; };
-		0B17248121F79A7E0004CF47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17248021F79A7E0004CF47 /* ViewController.m */; };
 		0B17248421F79A7E0004CF47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B17248221F79A7E0004CF47 /* Main.storyboard */; };
 		0B17248621F79A7F0004CF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B17248521F79A7F0004CF47 /* Assets.xcassets */; };
 		0B17248921F79A7F0004CF47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B17248721F79A7F0004CF47 /* LaunchScreen.storyboard */; };
 		0B17248C21F79A7F0004CF47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17248B21F79A7F0004CF47 /* main.m */; };
 		0B17249621F79A7F0004CF47 /* EveryDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17249521F79A7F0004CF47 /* EveryDoTests.m */; };
 		0B1724A121F79A7F0004CF47 /* EveryDoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724A021F79A7F0004CF47 /* EveryDoUITests.m */; };
+		0B1724B021F79B830004CF47 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724AF21F79B830004CF47 /* MainViewController.m */; };
+		0B1724B321F79BC40004CF47 /* ToDoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B221F79BC40004CF47 /* ToDoCell.m */; };
+		0B1724B621F7A3A70004CF47 /* ToDoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B521F7A3A70004CF47 /* ToDoData.m */; };
+		0B1724B921F7A3B70004CF47 /* ToDoDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1724B821F7A3B70004CF47 /* ToDoDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +41,6 @@
 		0B17247921F79A7E0004CF47 /* EveryDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B17247C21F79A7E0004CF47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B17247D21F79A7E0004CF47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0B17247F21F79A7E0004CF47 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0B17248021F79A7E0004CF47 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0B17248321F79A7E0004CF47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B17248521F79A7F0004CF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B17248821F79A7F0004CF47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,14 @@
 		0B17249C21F79A7F0004CF47 /* EveryDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EveryDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B1724A021F79A7F0004CF47 /* EveryDoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EveryDoUITests.m; sourceTree = "<group>"; };
 		0B1724A221F79A7F0004CF47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B1724AE21F79B830004CF47 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0B1724AF21F79B830004CF47 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0B1724B121F79BC40004CF47 /* ToDoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoCell.h; sourceTree = "<group>"; };
+		0B1724B221F79BC40004CF47 /* ToDoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoCell.m; sourceTree = "<group>"; };
+		0B1724B421F7A3A70004CF47 /* ToDoData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoData.h; sourceTree = "<group>"; };
+		0B1724B521F7A3A70004CF47 /* ToDoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoData.m; sourceTree = "<group>"; };
+		0B1724B721F7A3B70004CF47 /* ToDoDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoDataManager.h; sourceTree = "<group>"; };
+		0B1724B821F7A3B70004CF47 /* ToDoDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +112,14 @@
 			children = (
 				0B17247C21F79A7E0004CF47 /* AppDelegate.h */,
 				0B17247D21F79A7E0004CF47 /* AppDelegate.m */,
-				0B17247F21F79A7E0004CF47 /* ViewController.h */,
-				0B17248021F79A7E0004CF47 /* ViewController.m */,
+				0B1724AE21F79B830004CF47 /* MainViewController.h */,
+				0B1724AF21F79B830004CF47 /* MainViewController.m */,
+				0B1724B121F79BC40004CF47 /* ToDoCell.h */,
+				0B1724B221F79BC40004CF47 /* ToDoCell.m */,
+				0B1724B421F7A3A70004CF47 /* ToDoData.h */,
+				0B1724B521F7A3A70004CF47 /* ToDoData.m */,
+				0B1724B721F7A3B70004CF47 /* ToDoDataManager.h */,
+				0B1724B821F7A3B70004CF47 /* ToDoDataManager.m */,
 				0B17248221F79A7E0004CF47 /* Main.storyboard */,
 				0B17248521F79A7F0004CF47 /* Assets.xcassets */,
 				0B17248721F79A7F0004CF47 /* LaunchScreen.storyboard */,
@@ -262,9 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B17248121F79A7E0004CF47 /* ViewController.m in Sources */,
 				0B17248C21F79A7F0004CF47 /* main.m in Sources */,
+				0B1724B921F7A3B70004CF47 /* ToDoDataManager.m in Sources */,
+				0B1724B621F7A3A70004CF47 /* ToDoData.m in Sources */,
+				0B1724B021F79B830004CF47 /* MainViewController.m in Sources */,
 				0B17247E21F79A7E0004CF47 /* AppDelegate.m in Sources */,
+				0B1724B321F79BC40004CF47 /* ToDoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
