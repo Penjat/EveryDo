@@ -36,6 +36,7 @@
     }else{
         sender.title = @"show all";
     }
+    [self.tableView reloadData];
 }
 - (IBAction)sortByPriority:(id)sender {
     [[ToDoDataManager sharedInstance] sortForMostUrgent];
@@ -64,14 +65,24 @@
     return YES;
 }
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[ToDoDataManager sharedInstance]  getListCount];
+    if(self.showAll){
+        return [[ToDoDataManager sharedInstance]  getListCount];
+    }
+    return [[ToDoDataManager sharedInstance]  countNotDone];
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myToDoCell" ];
-    ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:indexPath.row];
+    
+    ToDoData *data = nil;
+    if(self.showAll){
+       data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:indexPath.row];
+    }else{
+        data = [[ToDoDataManager sharedInstance] getCellNotDoneDataAtIndex:indexPath.row];
+    }
+    
     
     [cell setUpWithData:data];
     [cell setDelegate:self];

@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)sortForMostUrgent;
 -(void)sortForLeastUrgent;
 -(void)sortForDate;
+-(NSInteger)countNotDone;
+-(ToDoData*)getCellNotDoneDataAtIndex:(NSUInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

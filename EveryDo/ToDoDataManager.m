@@ -67,6 +67,30 @@
     
     
 }
+-(ToDoData*)getCellNotDoneDataAtIndex:(NSUInteger)index{
+    //I know this is bad code
+    NSInteger i = index;
+    for (ToDoData *toDo in self.toDoList){
+        
+        if(i ==0 && !toDo.isDone){
+            return toDo;
+        }else{
+            i--;
+        }
+        
+    }
+    return nil;
+}
+-(NSInteger)countNotDone{
+    NSInteger i = 0;
+    for (ToDoData *data in self.toDoList) {
+        if(data.isDone == NO){
+            i++;
+        }
+    }
+    return i;
+    
+}
 -(void)updateDataModel:(ToDoData*)newData withBool:(BOOL)isDone{
     //cycle through objects and update the toggle value
     for (ToDoData *toDo in self.toDoList) {
