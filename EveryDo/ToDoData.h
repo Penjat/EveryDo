@@ -23,12 +23,13 @@ enum TODO_PRIORITY {
 
 
 
--(instancetype)initWithName:(NSString*)name priority:(enum TODO_PRIORITY)priority;
+-(instancetype)initWithName:(NSString*)name priority:(enum TODO_PRIORITY)priority date:(NSDate*)date;
 
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic)enum TODO_PRIORITY priority;
 @property (nonatomic)NSUInteger *index;
 @property (nonatomic)BOOL isDone;
+@property (nonatomic,strong)NSDate* dateToComplete;
 +(NSString*)getStringFromEnum:(enum TODO_PRIORITY)priority;
 @end
 

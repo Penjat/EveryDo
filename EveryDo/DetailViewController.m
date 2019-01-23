@@ -10,6 +10,9 @@
 #import "ToDoDataManager.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UIStepper *stepperDay;
+@property (weak, nonatomic) IBOutlet UIStepper *stepperMonth;
+@property (weak, nonatomic) IBOutlet UIStepper *stepperYear;
 
 @end
 
@@ -42,7 +45,7 @@
     if(self.dataIndex == -1){
         NSString *name = self.titleField.text;
         enum TODO_PRIORITY priority = (enum TODO_PRIORITY) self.prioritySlider.value;
-        ToDoData *newTask = [[ToDoData alloc]initWithName:name priority:priority];
+        ToDoData *newTask = [[ToDoData alloc]initWithName:name priority:priority date:[NSDate date]];
         [[ToDoDataManager sharedInstance] addNewTask:newTask] ;
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
@@ -67,7 +70,7 @@
     
     //if is creating
     if(self.dataIndex == -1){
-        data = [[ToDoData alloc]initWithName:@"New Task" priority:MEDIUM];
+        data = [[ToDoData alloc]initWithName:@"New Task" priority:MEDIUM date: [NSDate date]];
     }else{
         data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:self.dataIndex];
     }

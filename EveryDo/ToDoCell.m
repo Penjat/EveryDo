@@ -16,6 +16,7 @@
 @interface ToDoCell(){
     
 }
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
 @end
@@ -51,6 +52,32 @@
     self.name.text = data.name;
     self.priorityLabel.text = [ToDoData getStringFromEnum: data.priority];
     self.priorityLabel.textColor = [ToDoCell getColorForPriority:data.priority];
+    
+    
+    
+   
+    
+    
+    
+    NSInteger daysFromNow = [ToDoCell daysBetweenDate:[NSDate date] andDate:data.dateToComplete];
+    
+    self.dateLabel.text = [NSString stringWithFormat: @"%i days from now",daysFromNow ];
+}
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+                 interval:NULL forDate:fromDateTime];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+                 interval:NULL forDate:toDateTime];
+    
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
 }
 
 +(UIColor*)getColorForPriority:(enum TODO_PRIORITY)priority{

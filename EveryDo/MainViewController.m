@@ -25,7 +25,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [[ToDoDataManager sharedInstance] sortForLeastUrgent];
+    [[ToDoDataManager sharedInstance] sortForDate];
     
 }
 - (IBAction)addToDo:(UIBarButtonItem*)sender {
@@ -81,7 +81,7 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [[ToDoDataManager sharedInstance] sortForLeastUrgent];
+    [[ToDoDataManager sharedInstance] sortForDate];
     [self.tableView reloadData];
     
 }

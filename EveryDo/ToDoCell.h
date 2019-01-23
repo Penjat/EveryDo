@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic)BOOL isDone;
 -(void)setUpWithData:(ToDoData*)data;
 +(UIColor*)getColorForPriority:(enum TODO_PRIORITY)priority;
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 @end
 
 NS_ASSUME_NONNULL_END
