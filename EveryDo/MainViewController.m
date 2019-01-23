@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "ToDoCell.h"
+
 #import "ToDoDataManager.h"
 #import "DetailViewController.h"
 
@@ -25,15 +25,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    
-    
-    
-    
 }
 - (IBAction)addToDo:(UIBarButtonItem*)sender {
     NSLog(@"creating new TODO");
     self.isCreating = YES;
-    [[ToDoDataManager sharedInstance] createNewTODO];
+    
     [self performSegueWithIdentifier:@"goToDetails" sender:nil];
     
 }
@@ -59,6 +55,7 @@
     ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:indexPath.row];
     
     [cell setUpWithData:data];
+    [cell setDelegate:self];
     
     return cell;
 
@@ -69,19 +66,24 @@
     DetailViewController *detailController = segue.destinationViewController;
     
     if(self.isCreating){
-        ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:self.curRow];
         
-        
-        [detailController setToDoData:data];
+        //sends -1 to signify creating new task
+        [detailController setDataIndex:-1];
         [detailController setEditData:YES];
     }else{
-        ToDoData *data = [[ToDoDataManager sharedInstance] getLast];
-        [detailController setToDoData:data];
+        
+        //sends the index of the currently selected row
+        [detailController setDataIndex:self.curRow];
         [detailController setEditData:NO];
     }
     
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
+-(void)updateDataModel:(ToDoData*)data withBool:(BOOL)isDone{
+    [[ToDoDataManager sharedInstance] updateDataModel:data withBool:isDone];
+}
 
 
 

@@ -27,6 +27,7 @@ enum TODO_PRIORITY {
 
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic)enum TODO_PRIORITY priority;
+@property (nonatomic)NSUInteger *index;
 @property (nonatomic)BOOL isDone;
 +(NSString*)getStringFromEnum:(enum TODO_PRIORITY)priority;
 @end

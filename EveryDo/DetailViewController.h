@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailViewController : UIViewController
 
-@property (strong,nonatomic)ToDoData *toDoData;
+@property (nonatomic)NSInteger dataIndex;//-1 for creating
 @property (nonatomic)BOOL editData;
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UISlider *prioritySlider;

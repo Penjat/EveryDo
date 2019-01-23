@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "ToDoDataManager.h"
 
 @interface DetailViewController ()
 
@@ -17,16 +18,65 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if(self.dataIndex == -1){
+        UIBarButtonItem *homeButton = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
+        
+        self.navigationItem.rightBarButtonItem = homeButton;
+        
+        
+    }else{
+        UIBarButtonItem *homeButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(beginEditting)];
+        
+        self.navigationItem.rightBarButtonItem = homeButton;
+    }
+    
+    
     
     [self setUpFromData];
     [self setUpFieldsEditable];
 }
+-(void)saveButtonPressed{
+    NSLog(@"should save");
+    
+    //if this is a new task
+    if(self.dataIndex == -1){
+        NSString *name = self.titleField.text;
+        enum TODO_PRIORITY priority = (enum TODO_PRIORITY) self.prioritySlider.value;
+        ToDoData *newTask = [[ToDoData alloc]initWithName:name priority:priority];
+        [[ToDoDataManager sharedInstance] addNewTask:newTask] ;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        ToDoData *data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:self.dataIndex];
+        data.name = self.titleField.text;
+        data.priority = (enum TODO_PRIORITY) self.prioritySlider.value;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
+-(void)beginEditting{
+    NSLog(@"should begin editting");
+    self.editData = YES;
+    [self setUpFieldsEditable ];
+    UIBarButtonItem *homeButton = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
+    
+    self.navigationItem.rightBarButtonItem = homeButton;
+}
 -(void)setUpFromData{
     //sets up all the fields with the correct data from the toDoData
-    self.titleField.text = self.toDoData.name;
-    self.priorityField.text = [ToDoData getStringFromEnum: self.toDoData.priority];
-    self.priorityField.textColor = [ToDoCell getColorForPriority:self.toDoData.priority];
-    self.prioritySlider.value = (int) self.toDoData.priority;
+    ToDoData *data = nil;
+    
+    //if is creating
+    if(self.dataIndex == -1){
+        data = [[ToDoData alloc]initWithName:@"New Task" priority:MEDIUM];
+    }else{
+        data = [[ToDoDataManager sharedInstance] getCellDataAtIndex:self.dataIndex];
+    }
+    
+    
+    self.titleField.text = data.name;
+    self.priorityField.text = [ToDoData getStringFromEnum: data.priority];
+    self.priorityField.textColor = [ToDoCell getColorForPriority:data.priority];
+    self.prioritySlider.value = (int) data.priority;
 }
 - (IBAction)prioritySliderChanged:(UISlider*)sender {
      self.priorityField.text = self.priorityField.text = [ToDoData getStringFromEnum:   (enum TODO_PRIORITY)sender.value];

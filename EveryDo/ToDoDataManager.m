@@ -26,7 +26,7 @@
     if (self) {
         _toDoList = [[NSMutableArray alloc]init];
         ToDoData *sample1 = [[ToDoData alloc]initWithName:@"pick up food" priority:HIGH];
-        ToDoData *sample2 = [[ToDoData alloc]initWithName:@"pay bills" priority:LOW];
+        ToDoData *sample2 = [[ToDoData alloc]initWithName:@"pay bills" priority:LOW ];
         ToDoData *sample3 = [[ToDoData alloc]initWithName:@"wash dishes" priority:MEDIUM];
         
         _toDoList = [NSMutableArray arrayWithObjects:sample1,sample2,sample3, nil];
@@ -43,12 +43,21 @@
     
     return self.toDoList[index];
 }
--(void)createNewTODO{
-    ToDoData *newTODO = [[ToDoData alloc]initWithName:@"New Task" priority:LOW];
-    [self.toDoList addObject:newTODO];
+-(void)addNewTask:(ToDoData*)task{
+    [self.toDoList addObject:task];
+    
+    
 }
--(ToDoData*)getLast{
-    return [self.toDoList lastObject];
+-(void)updateDataModel:(ToDoData*)newData withBool:(BOOL)isDone{
+    //cycle through objects and update the toggle value
+    for (ToDoData *toDo in self.toDoList) {
+        if(toDo == newData){
+            NSLog(@"found a match");
+            toDo.isDone = isDone;
+            return;
+        }
+    }
+    NSLog(@"no match found");
 }
 
 

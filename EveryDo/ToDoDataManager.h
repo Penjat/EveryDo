@@ -13,12 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ToDoDataManager : NSObject
 
-@property (strong,nonatomic)NSMutableArray<ToDoData*> *toDoList;
+@property (strong,nonatomic,readonly)NSMutableArray<ToDoData*> *toDoList;
 + (instancetype)sharedInstance;
 -(NSInteger)getListCount;
 -(ToDoData*)getCellDataAtIndex:(NSUInteger)index;
--(void)createNewTODO;
--(ToDoData*)getLast;
+-(void)addNewTask:(ToDoData*)task;
+-(void)updateDataModel:(ToDoData*)data withBool:(BOOL)isDone;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -24,11 +24,14 @@
     
     //TODO change the value in the data maodel
     self.isDone = !self.isDone;
+    
+    [self.delegate updateDataModel:self.data withBool:self.isDone];
     if(self.isDone){
         [sender setTitle:@"☑︎" forState:UIControlStateNormal];
         return;
     }
     [sender setTitle:@"☐" forState:UIControlStateNormal];
+    
     
 }
 
@@ -44,6 +47,7 @@
 }
 
 -(void)setUpWithData:(ToDoData*)data{
+    self.data = data;
     self.name.text = data.name;
     self.priorityLabel.text = [ToDoData getStringFromEnum: data.priority];
     self.priorityLabel.textColor = [ToDoCell getColorForPriority:data.priority];

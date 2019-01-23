@@ -11,7 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol UpdateDataModel
+-(void)updateDataModel:(ToDoData*)data withBool:(BOOL)isDone;
+@end
+
 @interface ToDoCell : UITableViewCell
+
+@property (nonatomic)id<UpdateDataModel>delegate;
+@property (nonatomic,strong)ToDoData *data;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (nonatomic)BOOL isDone;
