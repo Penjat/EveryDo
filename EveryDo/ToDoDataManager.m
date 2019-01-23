@@ -59,6 +59,42 @@
     }
     NSLog(@"no match found");
 }
+-(void)sortForMostUrgent{
+    NSMutableArray<ToDoData*> *sortArray = [[NSMutableArray alloc]init];
+    
+    for(ToDoData *dataToAdd in self.toDoList){
+        int pos = 0;
+        for(ToDoData *dataToCheck in sortArray){
+            if( (int)dataToAdd.priority > (int)dataToCheck.priority){
+                break;
+            }else{
+                pos++;
+            }
+            
+        }
+        NSLog(@"breaking but reached the log");
+        [sortArray insertObject:dataToAdd atIndex:pos];
+    }
+    _toDoList = sortArray;
+}
+-(void)sortForLeastUrgent{
+    NSMutableArray<ToDoData*> *sortArray = [[NSMutableArray alloc]init];
+    
+    for(ToDoData *dataToAdd in self.toDoList){
+        int pos = 0;
+        for(ToDoData *dataToCheck in sortArray){
+            if( (int)dataToAdd.priority < (int)dataToCheck.priority){
+                break;
+            }else{
+                pos++;
+            }
+            
+        }
+        NSLog(@"breaking but reached the log");
+        [sortArray insertObject:dataToAdd atIndex:pos];
+    }
+    _toDoList = sortArray;
+}
 
 
 @end

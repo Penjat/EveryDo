@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(ToDoData*)getCellDataAtIndex:(NSUInteger)index;
 -(void)addNewTask:(ToDoData*)task;
 -(void)updateDataModel:(ToDoData*)data withBool:(BOOL)isDone;
-
+-(void)sortForMostUrgent;
+-(void)sortForLeastUrgent;
 @end
 
 NS_ASSUME_NONNULL_END

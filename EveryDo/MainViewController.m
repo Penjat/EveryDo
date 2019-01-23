@@ -25,6 +25,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [[ToDoDataManager sharedInstance] sortForLeastUrgent];
+    
 }
 - (IBAction)addToDo:(UIBarButtonItem*)sender {
     NSLog(@"creating new TODO");
@@ -79,7 +81,9 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [[ToDoDataManager sharedInstance] sortForLeastUrgent];
     [self.tableView reloadData];
+    
 }
 -(void)updateDataModel:(ToDoData*)data withBool:(BOOL)isDone{
     [[ToDoDataManager sharedInstance] updateDataModel:data withBool:isDone];
