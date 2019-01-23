@@ -16,6 +16,7 @@
 
 @property (nonatomic)NSUInteger curRow;
 @property (nonatomic)BOOL isCreating;
+@property (nonatomic)BOOL showAll;//toggles showing all or just the ones left to do
 @end
 
 @implementation MainViewController
@@ -24,9 +25,25 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.showAll = YES;
     [[ToDoDataManager sharedInstance] sortForDate];
     
+}
+- (IBAction)showAllOrNotDone:(UIBarButtonItem*)sender {
+    self.showAll = !self.showAll;
+    if(self.showAll){
+        sender.title = @"show not done";
+    }else{
+        sender.title = @"show all";
+    }
+}
+- (IBAction)sortByPriority:(id)sender {
+    [[ToDoDataManager sharedInstance] sortForMostUrgent];
+    [self.tableView reloadData];
+}
+- (IBAction)sortByDate:(id)sender {
+    [[ToDoDataManager sharedInstance] sortForDate];
+    [self.tableView reloadData];
 }
 - (IBAction)addToDo:(UIBarButtonItem*)sender {
     NSLog(@"creating new TODO");

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-j5-v6X">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <prototypes>
@@ -83,6 +83,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2L-5W-zLl">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="date" width="77.5" id="4Im-Au-TwM">
+                                        <connections>
+                                            <action selector="sortByDate:" destination="BYZ-38-t0r" id="5xS-cW-YSI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="priority" id="kiJ-dT-tUW">
+                                        <connections>
+                                            <action selector="sortByPriority:" destination="BYZ-38-t0r" id="7df-HW-Nvg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="show not done" id="bNA-wd-kle">
+                                        <connections>
+                                            <action selector="showAllOrNotDone:" destination="BYZ-38-t0r" id="thx-Wq-VCC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -94,6 +115,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Rah-7l-LsJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dsn-k5-8Wi">
                             <connections>
@@ -101,6 +123,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="F8V-j5-v6X" id="Oms-IS-eIh"/>
                         <segue destination="9iB-yZ-cGD" kind="show" identifier="goToDetails" id="oGg-d3-wQ6"/>
@@ -205,14 +228,23 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-eD-B31">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="11" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-eD-B31">
                                         <rect key="frame" x="128.5" y="37" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMonth:" destination="9iB-yZ-cGD" eventType="valueChanged" id="usI-CA-YCd"/>
+                                        </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NgD-4z-GuF">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="NgD-4z-GuF">
                                         <rect key="frame" x="249" y="37" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeDay:" destination="9iB-yZ-cGD" eventType="valueChanged" id="I7Q-cQ-oyu"/>
+                                        </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZiD-rG-JEs">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2019" minimumValue="1" maximumValue="3000" translatesAutoresizingMaskIntoConstraints="NO" id="ZiD-rG-JEs">
                                         <rect key="frame" x="8" y="37" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeYear:" destination="9iB-yZ-cGD" eventType="valueChanged" id="Uyw-dt-XSX"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -258,6 +290,9 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="labelDay" destination="9xx-at-cUo" id="j1u-1v-ij3"/>
+                        <outlet property="labelMonth" destination="Hvk-6t-wVb" id="xc3-EO-t4w"/>
+                        <outlet property="labelYear" destination="tXg-E5-t34" id="nXL-ue-cId"/>
                         <outlet property="notesText" destination="OYh-Bo-U6j" id="gqy-Zk-q5T"/>
                         <outlet property="priorityField" destination="6NZ-yB-Ie6" id="TY4-Xy-St1"/>
                         <outlet property="prioritySlider" destination="nw3-1y-rca" id="tGJ-uB-7Qg"/>
